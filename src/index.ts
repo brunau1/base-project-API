@@ -1,6 +1,6 @@
-import appServer from './app'
-import { config } from '../configurations/config'
+import application from './app'
+import config from '../configurations/config'
 
-appServer.listen(config.port, () => {
-    console.log("server listening on port"+config.port+"...")
+application.listen(config.port, () => {
+    console.log("server listening on port "+config.port+"...")
 })

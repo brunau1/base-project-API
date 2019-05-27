@@ -1,16 +1,12 @@
 import { Router } from 'express'
-import testeRoutes from '../routes/testeRoutes'
+import teste from '../controllers/TesteController'
 
 class Routes {
     router : Router
 
     constructor(){
         this.router = Router()
-        this.defineTesteRoutes()
-    }
-
-    defineTesteRoutes(){
-        this.router.use('/', testeRoutes)
+        this.router.get('/teste', teste.showMessage)
     }
 }
 export default new Routes().router

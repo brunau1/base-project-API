@@ -15,4 +15,4 @@ class Config implements ConfigInterface{
     }
 }
 
-export const config = new Config()
+export default new Config()
