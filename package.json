@@ -14,11 +14,11 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc -w",
+    "devWts": "tsc -w",
     "build": "rmdir /s /Q \"./src/build\" && tsc",
     "start": "node .",
-    "keep-running": "nodemon .",
-    "make-run": "npm run build && npm run start"
+    "devWjs": "nodemon .",
+    "init": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
