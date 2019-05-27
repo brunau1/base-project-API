@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import testeRoutes from '../routes/testeRoutes'
+import testRoutes from '../routes/testRoutes'
 
 class Routes {
     router : Router
@@ -10,7 +10,7 @@ class Routes {
     }
 
     defineTesteRoutes(){
-        this.router.use('/', testeRoutes)
+        this.router.use('/', testRoutes)
     }
 }
 export default new Routes().router
