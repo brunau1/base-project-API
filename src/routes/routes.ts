@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { Request, Response } from 'express'
 import testRoutes from '../routes/testRoutes'
 
 class Routes {
@@ -10,7 +11,11 @@ class Routes {
     }
 
     defineTesteRoutes(){
+        this.router.get('/', this.defaultPage)
         this.router.use('/', testRoutes)
+    }
+    defaultPage(req : Request, res : Response){
+        res.send("This is an API route working...")
     }
 }
 export default new Routes().router
