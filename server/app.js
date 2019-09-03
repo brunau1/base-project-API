@@ -11,7 +11,6 @@ const start = async () => {
     app.use(cors());
     app.use(express.json());
     app.use(config.endpoint, routes);
-    return app;
 }
 start();
 
