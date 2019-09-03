@@ -1,0 +1,26 @@
+{
+  "name": "base-project-API",
+  "version": "1.0.0",
+  "description": "The idea of this project is to develop a basic API that serves like a standard project to start any other project who use a similar structure.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunau1/base-project-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunau1/base-project-API/issues"
+  },
+  "homepage": "https://github.com/brunau1/base-project-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.11"
+  }
+}
