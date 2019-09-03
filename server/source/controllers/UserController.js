@@ -1,4 +1,4 @@
-var Users = require('../models/Users');
+const Users = require('../models/Users');
 
 function post(req, res) {
     const userData = {
@@ -7,10 +7,8 @@ function post(req, res) {
         'email': req.body.email,
         'password': req.body.password
     };
-
-    var user = new Users(userData);
+    const user = new Users(userData);
     user.save();
-
     res.status(201).send({
         message: 'User created'
     });
@@ -28,7 +26,7 @@ function get(req, res) {
 }
 
 function edit(req, res) {
-    
+
 }
 
 router.get('/edit', function (req, res, next) {
