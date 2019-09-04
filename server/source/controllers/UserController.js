@@ -1,59 +1,61 @@
 const Users = require('../models/Users');
 
-function post(req, res) {
+async function post(req, res) {
     const userData = {
-        'nome': req.body.nome,
+        'name': req.body.name,
         'type': req.body.type,
         'email': req.body.email,
         'password': req.body.password
     };
     const user = new Users(userData);
-    user.save();
+    await user.save();
     res.status(201).send({
         message: 'User created'
     });
 }
 
-function get(req, res) {
+async function get(req, res) {
     try {
-        const result = Users.find({});
+        const result = await Users.find({});
+        console.log(result)
         res.status(200).send(result);
     } catch (error) {
+        console.log(error)
         res.status(404).send({
             message: 'failed to find the data'
         });
     }
 }
 
-function edit(req, res) {
+function put(req, res) {
+    const id = req.body.id;
+    Users.findById(id, async (err, doc) => {
+        if (err) res.status(404).send({
+            message: 'User not found'
+        });
 
+        doc.name = req.body.name;
+        doc.type = req.body.type;
+        doc.email = req.body.email;
+        doc.password = req.body.password;
+        await doc.save();
+        res.status(200).send({
+            message: 'User updated'
+        });
+    })
 }
 
-router.get('/edit', function (req, res, next) {
-    res.render('edit');
-});
+async function del(req, res) {
+    const id = req.body.id;
+    await Users.findByIdAndRemove(id).exec();
+    res.status(200).send({
+        message: 'user removed'
+    });
+}  
 
-router.post('/edit', function (req, res, next) {
-    var id = req.body.id;
-
-    Contatos.findById(id, function (err, doc) {
-        if (err) {
-            console.error('error, no entry found');
-        }
-        doc.nome = req.body.nome;
-        doc.email = req.body.email;
-        doc.telefone = req.body.telefone;
-        doc.save();
-    })
-    res.redirect('/');
-});
-
-router.get('/delete', function (req, res, next) {
-    res.render('delete');
-});
-
-router.post('/delete', function (req, res, next) {
-    var id = req.body.id;
-    Contatos.findByIdAndRemove(id).exec();
-    res.redirect('/');
-});  
+module.exports = {
+    get,
+    post,
+    put,
+    del
+}
