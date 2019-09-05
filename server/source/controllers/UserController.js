@@ -3,7 +3,7 @@ const Users = require('../models/Users');
 async function post(req, res) {
     const userData = {
         'name': req.body.name,
-        'type': req.body.type,
+        'role': req.body.role,
         'email': req.body.email,
         'password': req.body.password
     };
@@ -35,7 +35,7 @@ function put(req, res) {
         });
 
         doc.name = req.body.name;
-        doc.type = req.body.type;
+        doc.role = req.body.role;
         doc.email = req.body.email;
         doc.password = req.body.password;
         await doc.save();
